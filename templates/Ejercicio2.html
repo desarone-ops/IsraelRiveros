@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Ejercicio 2{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-7 col-lg-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h2 class="h4 mb-4">Formulario de Nombres</h2>
+
+        <form method="post" novalidate>
+          <div class="mb-3">
+            <label for="nombre1" class="form-label">Nombre 1:</label>
+            <input type="text" class="form-control" id="nombre1" name="nombre1" value="{{ datos.nom1 }}">
+          </div>
+
+          <div class="mb-3">
+            <label for="nombre2" class="form-label">Nombre 2:</label>
+            <input type="text" class="form-control" id="nombre2" name="nombre2" value="{{ datos.nom2 }}">
+          </div>
+
+          <div class="mb-3">
+            <label for="nombre3" class="form-label">Nombre 3:</label>
+            <input type="text" class="form-control" id="nombre3" name="nombre3" value="{{ datos.nom3 }}">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+
+        {% if resultado %}
+          <hr class="my-4">
+          {% if resultado.lista|length == 1 %}
+            <p>Nombre más largo: <strong>{{ resultado.lista[0] }}</strong></p>
+            <p>Cantidad de caracteres: <strong>{{ resultado.largo }}</strong></p>
+          {% else %}
+            <p>Hay empate entre los nombres más largos:</p>
+            <ul>
+              {% for n in resultado.lista %}
+                <li>{{ n }}</li>
+              {% endfor %}
+            </ul>
+            <p>Cantidad de caracteres: <strong>{{ resultado.largo }}</strong></p>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

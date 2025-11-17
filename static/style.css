@@ -1,0 +1,4 @@
+/* Toques visuales mínimos */
+.btn-lg {
+  min-width: 260px;
+}

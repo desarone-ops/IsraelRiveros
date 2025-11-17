@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+  <div class="d-flex flex-column align-items-center gap-4 mt-5">
+    <a href="{{ url_for('ejercicio1') }}" class="btn btn-primary btn-lg px-5 py-3">Ejercicio 1</a>
+    <a href="{{ url_for('ejercicio2') }}" class="btn btn-primary btn-lg px-5 py-3">Ejercicio 2</a>
+  </div>
+{% endblock %}

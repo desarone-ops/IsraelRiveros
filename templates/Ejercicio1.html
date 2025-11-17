@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Ejercicio 1{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-7 col-lg-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h2 class="h4 mb-4">Formulario de Notas</h2>
+
+        <form method="post" novalidate>
+          <!-- Nota 1 -->
+          <div class="mb-3">
+            <label for="nota1" class="form-label">Nota 1:</label>
+            <input type="text" class="form-control {% if errores.get('nota1') %}is-invalid{% endif %}"
+                   id="nota1" name="nota1" value="{{ datos.n1 }}">
+            {% if errores.get('nota1') %}
+              <div class="invalid-feedback">{{ errores['nota1'] }}</div>
+            {% else %}
+              <div class="form-text">Rango permitido: 10 a 70</div>
+            {% endif %}
+          </div>
+
+          <!-- Nota 2 -->
+          <div class="mb-3">
+            <label for="nota2" class="form-label">Nota 2:</label>
+            <input type="text" class="form-control {% if errores.get('nota2') %}is-invalid{% endif %}"
+                   id="nota2" name="nota2" value="{{ datos.n2 }}">
+            {% if errores.get('nota2') %}
+              <div class="invalid-feedback">{{ errores['nota2'] }}</div>
+            {% else %}
+              <div class="form-text">Rango permitido: 10 a 70</div>
+            {% endif %}
+          </div>
+
+          <!-- Nota 3 -->
+          <div class="mb-3">
+            <label for="nota3" class="form-label">Nota 3:</label>
+            <input type="text" class="form-control {% if errores.get('nota3') %}is-invalid{% endif %}"
+                   id="nota3" name="nota3" value="{{ datos.n3 }}">
+            {% if errores.get('nota3') %}
+              <div class="invalid-feedback">{{ errores['nota3'] }}</div>
+            {% else %}
+              <div class="form-text">Rango permitido: 10 a 70</div>
+            {% endif %}
+          </div>
+
+          <!-- Asistencia -->
+          <div class="mb-3">
+            <label for="asistencia" class="form-label">Asistencia (%):</label>
+            <input type="text" class="form-control {% if errores.get('asistencia') %}is-invalid{% endif %}"
+                   id="asistencia" name="asistencia" value="{{ datos.asistencia }}">
+            {% if errores.get('asistencia') %}
+              <div class="invalid-feedback">{{ errores['asistencia'] }}</div>
+            {% else %}
+              <div class="form-text">Rango permitido: 0 a 100</div>
+            {% endif %}
+          </div>
+
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+
+        {% if resultado %}
+          <hr class="my-4">
+          <p class="mb-1">Promedio: <strong>{{ resultado.promedio }}</strong></p>
+          <p class="fw-bold {% if resultado.estado == 'APROBADO' %}text-success{% else %}text-danger{% endif %}">
+            {{ resultado.estado }}
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
